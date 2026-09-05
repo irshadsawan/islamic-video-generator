@@ -1,1 +1,13 @@
-
+.env
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+*.mp3
+*.wav
+*.mp4
+*.mov
+*.png
+*.jpg
+*.jpeg
+temp/
+output/
