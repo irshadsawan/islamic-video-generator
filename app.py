@@ -125,11 +125,5 @@ if st.button("📝 Generate Script", use_container_width=True):
                 )
 
         except Exception as e:
-
-            st.error(
-                "❌ Unable to generate the script."
-            )
-
-            st.info(
-                "Please check your Groq API key and Streamlit Secrets."
-            )
+    st.error("❌ Unable to generate the script.")
+    st.exception(e)
