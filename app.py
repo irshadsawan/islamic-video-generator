@@ -88,17 +88,48 @@ st.divider()
 if st.button("📝 Generate Script", use_container_width=True):
 
     if not topic.strip():
+
         st.warning("Please enter an Islamic topic.")
+
     else:
-        st.success("Topic received successfully!")
 
-        st.write("### Your Settings")
+        try:
 
-        st.write("**Topic:**", topic)
-        st.write("**Language:**", language)
-        st.write("**Duration:**", duration)
-        st.write("**Video Type:**", video_type)
-        st.write("**Tone:**", tone)
-        st.write("**Resolution:**", resolution)
-        st.write("**Aspect Ratio:**", aspect_ratio)
-        st.write("**Voice:**", voice)
+            with st.spinner("🕌 Creating your Islamic script..."):
+
+                script = generate_script(
+                    topic=topic,
+                    language=language,
+                    duration=duration,
+                    video_type=video_type,
+                    tone=tone
+                )
+
+            st.success("✅ Islamic script generated successfully!")
+
+            st.subheader("📜 Generated Script")
+
+            st.write(script)
+
+            st.divider()
+
+            st.subheader("🎬 Next Step")
+
+            if st.button(
+                "✅ Approve & Generate Video",
+                use_container_width=True
+            ):
+
+                st.info(
+                    "Video generation will be added in the next phase."
+                )
+
+        except Exception as e:
+
+            st.error(
+                "❌ Unable to generate the script."
+            )
+
+            st.info(
+                "Please check your Groq API key and Streamlit Secrets."
+            )
